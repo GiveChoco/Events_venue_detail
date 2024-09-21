@@ -1,0 +1,1 @@
+# our ethics on using API and webscraping
