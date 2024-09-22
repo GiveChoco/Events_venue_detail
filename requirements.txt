@@ -1,1 +1,3 @@
-#any api keys or pulls or beautiful soup
+requests
+beautifulsoup4
+selenium
