@@ -35,13 +35,10 @@ def fetch_information(venue_name):
     try:
         rating_element = driver.find_element(By.XPATH, '//*[@id="QA0Szd"]/div/div/div[1]/div[2]/div/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div/div[2]/span[1]/span[1]')
         rating = rating_element.text
-    except:
-        rating = "N/A"
-    
-    try:
         rating_numbers = driver.find_element(By.XPATH,"//div[contains(@class, 'F7nice')]//span/span/span[contains(@aria-label, 'reviews')]")
         rating_num = rating_numbers.text.replace('(','').replace(')','')
     except:
+        rating = "N/A"
         rating_num = "N/A"
 
 
@@ -86,7 +83,7 @@ def get_venue(event_id):
     else:
         return f"Error: {response.text}", response.status_code
     
-event_array = [1013544838897,989096172277,1021741364927,967246519377,1003868767507,925408962117]
+event_array = [1013544838897,989096172277,1021741364927,967246519377,1003868767507,925408962117,769783020737,1021912436607,999634352257]
 
 CLIENT_ID = os.getenv('MY_API')
 CLIENT_SECRET = os.getenv('SECRET_KEY')
@@ -123,7 +120,7 @@ def oauth_callback():
 
     if token_response.status_code == 200:
         session['access_token'] = token_response.json().get('access_token')
-        return f"Access Token: {session['access_token']}"
+        return f"Access granted. Please locate to /Get_venue page"
     else:
         return f"Error: {token_response.text}", token_response.status_code
 
